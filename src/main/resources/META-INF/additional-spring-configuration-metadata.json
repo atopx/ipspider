@@ -1,0 +1,19 @@
+{
+  "properties": [
+    {
+      "name": "chrome.driver",
+      "type": "java.lang.String",
+      "description": "chrome driver path."
+    },
+    {
+      "name": "chrome.timeout",
+      "type": "java.lang.Integer",
+      "description": "chrome load timeout."
+    },
+    {
+      "name": "chrome.headless",
+      "type": "java.lang.Boolean",
+      "description": "chrome headless."
+    }
+  ]
+}
