@@ -287,7 +287,6 @@ public class SlideBusiness {
         } catch (NoSuchElementException | TimeoutException e) {
             return result;
         }
-
         Matcher matcher;
         if (ipText.contains("局域网")) {
             result.put("ip_type", "局域网");
@@ -304,11 +303,12 @@ public class SlideBusiness {
             return result;
         }
         if (matcher.find()) {
-            String[] geo = matcher.group(1).split("-");
+            String geo_str = trim(matcher.group(1));
+            String[] geo = geo_str.split("-");
             for (int i = 0; i < geo.length; i++) {
                 result.put(geoKeys[i], geo[i]);
             }
-            result.put("org", matcher.group(2));
+            result.put("org", trim(matcher.group(2)));
         }
         try {
             String ipType = chrome.findElement(By.className("itype")).getText();
@@ -316,6 +316,12 @@ public class SlideBusiness {
         } catch (NoSuchElementException ignored) {
         }
         return result;
+    }
+
+
+    private String trim(String str) {
+        // 去除字符串首尾空格
+        return str.trim();
     }
 
     public void close() {
