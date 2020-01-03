@@ -1,0 +1,10 @@
+version: '3.7'
+
+services:
+  ip-slide:
+    image: harbor.socmap.net/bs-ip/ip-slide:v0.0.1
+    build:
+      context: slide
+      dockerfile: Dockerfile
+    volumes:
+      - './slide:/usr/src/app'
